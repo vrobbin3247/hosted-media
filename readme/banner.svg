@@ -1,101 +1,232 @@
-<svg
-  width="854"
-  height="250"
-  xmlns="http://www.w3.org/2000/svg"
-  style="z-index:1;position:relative"
-  viewBox="0 0 854 250"
->
+<svg width="854" height="250" xmlns="http://www.w3.org/2000/svg" style="z-index:1;position:relative" viewBox="0 0 854 250">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
   <style>
     .title {
       font-size: 48px;
       font-weight: 700;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, &apos;Segoe UI&apos;, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       fill: #ffffff;
-      filter: url(#glow);
       animation: fadeIn 1.2s ease-in-out forwards;
     }
     .desc {
       font-size: 18px;
       font-weight: 500;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      opacity: 1;
+      font-family: -apple-system, BlinkMacSystemFont, &apos;Segoe UI&apos;, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       fill: #e0e0e0;
       animation: fadeIn 1.2s ease-in-out forwards;
     }
     .icon {
-      fill: #4ab460;
+      fill: #ffffff;
       opacity: 0.9;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
+    /* Neural Network Styles */
+    .connection {
+      stroke: #ffffff;
+      stroke-width: 1;
+      fill: none;
+      opacity: 0.35;
+    }
+    .node {
+      fill: #ffffff;
+      opacity: 0.6;
+      filter: url(#nodeGlow);
+    }
+    .pulse {
+      fill: #ffffff;
+      opacity: 0;
+    }
+    
+    /* Network breathing animation */
+    .network {
+  transform-origin: 650px 105px;
+  animation: networkBreath 8s ease-in-out infinite;
+  transform: translateY(-20px);
+}
+    
+    @keyframes networkBreath {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    
+    /* Node firing animations */
+    .node1 { animation: nodeFire 6s ease-in-out infinite; }
+    .node2 { animation: nodeFire 6s ease-in-out infinite 0.5s; }
+    .node3 { animation: nodeFire 6s ease-in-out infinite 1s; }
+    .node4 { animation: nodeFire 6s ease-in-out infinite 1.5s; }
+    .node5 { animation: nodeFire 6s ease-in-out infinite 2s; }
+    .node6 { animation: nodeFire 6s ease-in-out infinite 2.5s; }
+    .node7 { animation: nodeFire 6s ease-in-out infinite 3s; }
+    .node8 { animation: nodeFire 6s ease-in-out infinite 3.5s; }
+    .node9 { animation: nodeFire 6s ease-in-out infinite 4s; }
+    .node10 { animation: nodeFire 6s ease-in-out infinite 4.5s; }
+    .node11 { animation: nodeFire 6s ease-in-out infinite 5s; }
+    .node12 { animation: nodeFire 6s ease-in-out infinite 5.5s; }
+    
+    @keyframes nodeFire {
+      0%, 90% { opacity: 0.6; }
+      5%, 10% { opacity: 1; }
+    }
+    
+    /* Pulse animations along connections */
+    .pulse1 { animation: pulse1 4s ease-in-out infinite; }
+    .pulse2 { animation: pulse2 4s ease-in-out infinite 0.8s; }
+    .pulse3 { animation: pulse3 4s ease-in-out infinite 1.6s; }
+    .pulse4 { animation: pulse4 4s ease-in-out infinite 2.4s; }
+    .pulse5 { animation: pulse5 4s ease-in-out infinite 3.2s; }
+    
+    @keyframes pulse1 {
+      0% { opacity: 0; cx: 550; cy: 60; }
+      20% { opacity: 0.8; }
+      50% { cx: 680; cy: 90; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0; cx: 750; cy: 110; }
+    }
+    
+    @keyframes pulse2 {
+      0% { opacity: 0; cx: 580; cy: 180; }
+      20% { opacity: 0.8; }
+      50% { cx: 720; cy: 140; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0; cx: 790; cy: 120; }
+    }
+    
+    @keyframes pulse3 {
+      0% { opacity: 0; cx: 520; cy: 140; }
+      20% { opacity: 0.8; }
+      50% { cx: 650; cy: 160; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0; cx: 760; cy: 180; }
+    }
+    
+    @keyframes pulse4 {
+      0% { opacity: 0; cx: 600; cy: 80; }
+      20% { opacity: 0.8; }
+      50% { cx: 700; cy: 200; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0; cx: 780; cy: 160; }
+    }
+    
+    @keyframes pulse5 {
+      0% { opacity: 0; cx: 560; cy: 200; }
+      20% { opacity: 0.8; }
+      50% { cx: 670; cy: 120; }
+      70% { opacity: 0.8; }
+      100% { opacity: 0; cx: 770; cy: 140; }
+    }
   </style>
-
-  <!-- Wave animation (kept as requested) -->
+<!--Wave animation (kept as requested)-->
   <g transform="translate(427, 125) scale(1, 1) translate(-427, -125)">
-    <path d="" fill="#4ab460" opacity="0.4">
-      <animate
-        attributeName="d"
-        dur="20s"
-        repeatCount="indefinite"
-        keyTimes="0;0.333;0.667;1"
-        calcMode="spline"
-        keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
-        values="M0 0L 0 170Q 213.5 210 427 180T 854 205L 854 0 Z;M0 0L 0 195Q 213.5 210 427 190T 854 180L 854 0 Z;M0 0L 0 215Q 213.5 185 427 215T 854 180L 854 0 Z;M0 0L 0 170Q 213.5 210 427 180T 854 205L 854 0 Z">
-      </animate>
+    <path d="" fill="#4ab460" opacity="0.8">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" values="M0 0L 0 170Q 213.5 210 427 180T 854 205L 854 0 Z;M0 0L 0 195Q 213.5 210 427 190T 854 180L 854 0 Z;M0 0L 0 215Q 213.5 185 427 215T 854 180L 854 0 Z;M0 0L 0 170Q 213.5 210 427 180T 854 205L 854 0 Z"/>
     </path>
-    <path d="" fill="#4ab460" opacity="0.4">
-      <animate
-        attributeName="d"
-        dur="20s"
-        repeatCount="indefinite"
-        keyTimes="0;0.333;0.667;1"
-        calcMode="spline"
-        keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
-        begin="-10s"
-        values="M0 0L 0 185Q 213.5 230 427 200T 854 210L 854 0 Z;M0 0L 0 200Q 213.5 170 427 170T 854 190L 854 0 Z;M0 0L 0 195Q 213.5 175 427 200T 854 215L 854 0 Z;M0 0L 0 185Q 213.5 230 427 200T 854 210L 854 0 Z">
-      </animate>
+    <path d="" fill="#4ab460" opacity="0.8">
+      <animate attributeName="d" dur="20s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcMode="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-10s" values="M0 0L 0 185Q 213.5 230 427 200T 854 210L 854 0 Z;M0 0L 0 200Q 213.5 170 427 170T 854 190L 854 0 Z;M0 0L 0 195Q 213.5 175 427 200T 854 215L 854 0 Z;M0 0L 0 185Q 213.5 230 427 200T 854 210L 854 0 Z"/>
     </path>
   </g>
-
-  <!-- Main content -->
+<!--Main content-->
   <g>
-
-  
-    
-    <!-- Name and title -->
-    <text x="25" y="75" class="title">vrobbin3247</text>
-    <text x="25" y="100" class="desc" style="font-size: 16px; opacity: 0.8;">Full Stack Developer and Tech Enthusiast</text>
-    
-    <!-- Contact info with icons -->
-    <g transform="translate(25, 125)">
-      <!-- Website -->
+<!--Name and title-->
+    <text x="25" y="50" class="title">Vaibhav Mandavkar</text>
+    <text x="25" y="75" class="desc" style="font-size: 18px; ">Data Science and Machine Learning Enthusiast</text>
+<!--Contact info with icons-->
+    <g transform="translate(25, 100)">
+<!--Website-->
       <g>
-        <circle cx="8" cy="8" r="8" fill="#4ab460" opacity="0.2"/>
-        <text x="8" y="12" text-anchor="middle" style="font-size: 10px; fill: #4ab460; font-weight: bold;">🌐</text>
-        <text x="25" y="12" class="desc">uvaan.co.in</text>
+        <svg y="-3" class="desc" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+          <path fill="#ffffff" d="M16.36 14c.08-.66.14-1.32.14-2c0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2c0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2c0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2c0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/>
+        </svg>
+        <text x="30" y="12" class="desc">uvaan.co.in</text>
       </g>
-      
-      <!-- Email -->
+<!--Email-->
       <g transform="translate(0, 25)">
-        <circle cx="8" cy="8" r="8" fill="#4ab460" opacity="0.2"/>
-        <text x="8" y="12" text-anchor="middle" style="font-size: 10px; fill: #4ab460; font-weight: bold;">📧</text>
-        <text x="25" y="12" class="desc">vaibhavm3247@gmail.com</text>
+        <svg y="-3" class="desc" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+          <path fill="#ffffff" d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64z"/>
+        </svg>
+        <text x="30" y="12" class="desc">vaibhavm3247@gmail.com</text>
       </g>
-      
-      <!-- LinkedIn -->
+<!--LinkedIn-->
       <g transform="translate(0, 50)">
-        <circle cx="8" cy="8" r="8" fill="#4ab460" opacity="0.2"/>
-        <text x="8" y="12" text-anchor="middle" style="font-size: 10px; fill: #4ab460; font-weight: bold;">💼</text>
-        <text x="25" y="12" class="desc">linkedin.com/in/vaibhav-mandavkar-691701172</text>
+        <svg y="-3" class="desc" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
+          <path fill="#ffffff" d="M3.44 4.89c.8 0 1.44-.65 1.44-1.44s-.65-1.44-1.44-1.44S2 2.66 2 3.45s.65 1.44 1.44 1.44Zm2.81 1.09V14h2.48v-3.96c0-1.05.2-2.06 1.49-2.06s1.29 1.2 1.29 2.12V14H14V9.6c0-2.16-.46-3.82-2.98-3.82c-1.21 0-2.02.66-2.35 1.29h-.03v-1.1H6.26Zm-4.05 0h2.49V14H2.2V5.98Z"/>
+        </svg>
+        <text x="30" y="12" class="desc">vaibhav-mandavkar-691701172</text>
       </g>
-      
-      <!-- Social -->
+<!--Social-->
       <g transform="translate(0, 75)">
-        <circle cx="8" cy="8" r="8" fill="#4ab460" opacity="0.2"/>
-        <text x="8" y="12" text-anchor="middle" style="font-size: 10px; fill: #4ab460; font-weight: bold;">🐦</text>
-        <text x="25" y="12" class="desc">@vaibhavmandavkar</text>
+        <svg y="-3" class="desc" xmlns="http://www.w3.org/2000/svg" width="20px" height="18px" viewBox="0 0 32 32">
+          <path fill="#ffffff" d="M25.099 31.812c-.025.12-.156.188-.375.188h-4.183c-.249 0-.468-.109-.656-.328l-6.907-8.787l-1.932 1.828v6.817c0 .313-.151.469-.463.469H7.338c-.312 0-.469-.156-.469-.469V.469c0-.308.157-.469.469-.469h3.245c.312 0 .463.161.463.469v19.124l8.271-8.359c.224-.224.443-.328.661-.328h4.319c.192 0 .317.077.38.239c.063.199.047.339-.047.417l-8.74 8.459l9.115 11.343c.125.141.156.276.093.48z"/>
+        </svg>
+        <text x="30" y="12" class="desc">@vaibhavmandavkar</text>
       </g>
-    </g>    
+    </g>
+    <g transform="translate(20, -25)">
+<!--Neural Network-->
+    <g class="network">
+<!--Connections (drawn first so they appear behind nodes)-->
+      <path class="connection" d="M550,60 Q600,75 680,90"/>
+      <path class="connection" d="M550,60 Q620,85 720,140"/>
+      <path class="connection" d="M550,60 Q650,90 750,110"/>
+      <path class="connection" d="M580,180 Q650,160 720,140"/>
+      <path class="connection" d="M580,180 Q670,180 760,180"/>
+      <path class="connection" d="M580,180 Q685,175 790,120"/>
+      <path class="connection" d="M520,140 Q585,150 650,160"/>
+      <path class="connection" d="M520,140 Q640,150 760,180"/>
+      <path class="connection" d="M600,80 Q650,100 700,200"/>
+      <path class="connection" d="M600,80 Q690,100 780,160"/>
+      <path class="connection" d="M560,200 Q615,180 670,120"/>
+      <path class="connection" d="M560,200 Q665,190 770,140"/>
+      <path class="connection" d="M680,90 Q715,105 750,110"/>
+      <path class="connection" d="M680,90 Q735,115 790,120"/>
+      <path class="connection" d="M720,140 Q755,150 790,120"/>
+      <path class="connection" d="M650,160 Q705,170 760,180"/>
+      <path class="connection" d="M650,160 Q720,170 780,160"/>
+      <path class="connection" d="M700,200 Q735,190 770,140"/>
+      <path class="connection" d="M700,200 Q740,190 780,160"/>
+      <path class="connection" d="M670,120 Q720,120 770,140"/>
+<!--Nodes-->
+      <circle class="node node1" cx="550" cy="60" r="4"/>
+      <circle class="node node2" cx="580" cy="180" r="5"/>
+      <circle class="node node3" cx="520" cy="140" r="3"/>
+      <circle class="node node4" cx="600" cy="80" r="4"/>
+      <circle class="node node5" cx="560" cy="200" r="4"/>
+      <circle class="node node6" cx="680" cy="90" r="5"/>
+      <circle class="node node7" cx="720" cy="140" r="6"/>
+      <circle class="node node8" cx="650" cy="160" r="4"/>
+      <circle class="node node9" cx="700" cy="200" r="3"/>
+      <circle class="node node10" cx="670" cy="120" r="4"/>
+      <circle class="node node11" cx="750" cy="110" r="5"/>
+      <circle class="node node12" cx="790" cy="120" r="4"/>
+      <circle class="node node11" cx="760" cy="180" r="3"/>
+      <circle class="node node12" cx="780" cy="160" r="4"/>
+      <circle class="node node11" cx="770" cy="140" r="5"/>
+<!--Animated pulses-->
+      <circle class="pulse pulse1" r="2"/>
+      <circle class="pulse pulse2" r="2"/>
+      <circle class="pulse pulse3" r="2"/>
+      <circle class="pulse pulse4" r="2"/>
+      <circle class="pulse pulse5" r="2"/>
+    </g>
+      </g>
   </g>
 </svg>
